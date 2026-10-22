@@ -42,31 +42,12 @@ Contributions welcome! Open a PR to add/update entries. Keep descriptions factua
 
 ## SaaS/Hosted Platforms
 
-
-
-- **[Apollo GraphOS (Studio)](https://studio.apollographql.com/)**  
-
-  Apollo's commercial platform for schema registry, federation management, and usage reporting. The open-source Apollo Server integrates with GraphOS for schema checks and metrics, but the platform itself is proprietary. Enterprise-tier pricing for teams needing federation governance and schema delivery.
-
-
-
-- **[Hasura Cloud (DDN)](https://hasura.io/)**  
-
-  Managed tier of Hasura's Data Delivery Network. **Important licensing nuance**: Hasura V3 core engine and data connectors are Apache 2.0, but the **DDN CLI, web console, and LSP are proprietary**—building metadata requires the cloud control plane . The managed offering provides instant GraphQL over Postgres, MongoDB, ClickHouse, and SQL Server without self-hosting.
-
-
-
-- **[AWS AppSync](https://aws.amazon.com/appsync/)**  
-
-  AWS's managed GraphQL service with real-time subscriptions, offline support, and built-in authorization. Integrates with DynamoDB, Lambda, and other AWS services. Consumption-based pricing. Proprietary, best for AWS-native architectures.
-
-
-
-- **[StepZen (IBM)](https://stepzen.com/)**  
-
-  GraphQL-as-a-service platform for composing graphs from REST, SOAP, SQL, and other GraphQL sources. Acquired by IBM and integrated into their API Connect portfolio. Declarative configuration via `stepzen` CLI. Proprietary with free tier.
-
-
+| Platform | Company Valuation / Revenue | Starting Pricing | Free Tier Limits | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **[AWS AppSync](https://aws.amazon.com/appsync/)** | **~$2.82T** market cap / **$716.9B** revenue (Amazon) | **$4.00 per million** query & mutation operations; **$2.00 per million** real-time update operations | **12 Months Free**: 250,000 query/mutation operations/month, 250,000 real-time updates/month, and 600,000 connection minutes/month | AWS's managed GraphQL service with real-time subscriptions, offline support, and built-in authorization. Integrates with DynamoDB, Lambda, and other AWS services. Proprietary, best for AWS-native architectures. |
+| **[StepZen (IBM)](https://stepzen.com/)** | **~$220B** market cap / **$67.5B** revenue (IBM) | **$1,056/year** (~$88/month for up to 100k API calls/year on AWS Marketplace) / Pay-as-you-go via IBM Cloud from ~$0.0034/hour | **Free Lite Plan**: Up to 50,000 API calls/month across max 4 endpoints (1 location, 500 TPM / 100 TPS burst limit; community support) | GraphQL-as-a-service platform for composing graphs from REST, SOAP, SQL, and other GraphQL sources. Acquired by IBM and integrated into IBM API Connect Essentials. Declarative configuration via `stepzen` CLI. |
+| **[Apollo GraphOS (Studio)](https://studio.apollographql.com/)** | **$1.5B** valuation / **~$35M-$40M** ARR (Apollo Graph Inc.) | **Developer tier: $5.00 per million** requests (Queries & Mutations) + $2.00 per million subscription events (includes $50 credit) | **Free Forever**: Full GraphOS Studio access (Explorer, Registry, APM), up to 3 team members, self-hosted router rate-limited to 60 requests/minute | Apollo's commercial platform for schema registry, federation management, and usage reporting. Open-source Apollo Server integrates with GraphOS for schema checks and metrics; proprietary control plane. |
+| **[Hasura Cloud (DDN)](https://hasura.io/)** | **$1.0B** valuation / **~$25M-$30M** ARR (Hasura, Inc.) | **DDN Base: ~$5.00/month** (based on active data models); Cloud v2 Professional: **$1.50/project-hour** + $0.13/GB data passthrough | **Free Forever / 30-day trial for Base**: Cloud Free includes 3 projects, 2 data connectors, 3 million requests/month, and 100 MB data passthrough/month | Managed tier of Hasura's Data Delivery Network. Managed offering provides instant GraphQL over Postgres, MongoDB, ClickHouse, and SQL Server without self-hosting. DDN CLI, console, and LSP are proprietary. |
 
 ## Open-Source GitHub Projects
 
