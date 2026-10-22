@@ -211,7 +211,7 @@
 
     <!-- Bottom Metric / Badge Footer -->
     <text x="600" y="280" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="13" fill="#94a3b8">
-      🔥 Covering Apollo Server &bull; Supabase pg_graphql &bull; Prisma &bull; Hasura &bull; GraphQL Hive &bull; Cosmo &bull; NestJS &bull; Yoga
+      🔥 Covering Apollo Server &#8226; Supabase pg_graphql &#8226; Prisma &#8226; Hasura &#8226; GraphQL Hive &#8226; Cosmo &#8226; NestJS &#8226; Yoga
     </text>
   </g>
 </svg>
