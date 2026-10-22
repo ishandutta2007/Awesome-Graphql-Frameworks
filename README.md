@@ -1,150 +1,170 @@
-# Awesome-Graphql-Frameworks
-
-## Top GraphQL Frameworks Ecosystem
-
-
-
-**Curated List of SaaS Products & Open-Source GitHub Projects**  
-
-*Focused on Schema-First Servers, Code-First Modules & Self-Hosted Federation Platforms*  
-
-**Last updated: October 2026**
-
-
-
-This repository tracks notable **SaaS platforms** and **open-source projects** for **GraphQL Frameworks**. These tools provide the server-side infrastructure for building GraphQL APIs—handling schema definition, resolvers, federation, and execution—so teams can expose data graphs without writing protocol-level code from scratch.
-
-
-
-**Examples** include Apollo Server, Hasura, GraphQL Hive, WunderGraph Cosmo, NestJS GraphQL, Prisma, and Supabase (the category leaders).
-
-
-
-**Open-source emphasis**: This section is heavily expanded with every major active project for self-hosting, federation governance, and transparent schema management—ideal for teams that need data sovereignty, avoid per-request SaaS pricing, and require auditable GraphQL infrastructure. The open-source landscape is anchored by **Apollo Server** (the spec-compliant JavaScript standard), **Hasura** (instant GraphQL over databases), and **GraphQL Hive** (MIT-licensed federation platform), with **NestJS GraphQL** offering code-first TypeScript integration, **Prisma** serving as the ORM layer inside resolvers, and **Supabase** providing Postgres-native GraphQL via `pg_graphql`.
-
-
-
-Contributions welcome! Open a PR to add/update entries. Keep descriptions factual and link to official sites.
-
-
-
-## Table of Contents
-
-- [SaaS/Hosted Platforms](#saas-hosted-platforms)
-
-- [Open-Source GitHub Projects](#open-source-github-projects)
-
-- [How to Contribute](#how-to-contribute)
-
-- [Disclaimer](#disclaimer)
-
-
-
-## SaaS/Hosted Platforms
-
-| Platform | Company Valuation / Revenue | Starting Pricing | Free Tier Limits | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| **[AWS AppSync](https://aws.amazon.com/appsync/)** | **~$2.82T** market cap / **$716.9B** revenue (Amazon) | **$4.00 per million** query & mutation operations; **$2.00 per million** real-time update operations | **12 Months Free**: 250,000 query/mutation operations/month, 250,000 real-time updates/month, and 600,000 connection minutes/month | AWS's managed GraphQL service with real-time subscriptions, offline support, and built-in authorization. Integrates with DynamoDB, Lambda, and other AWS services. Proprietary, best for AWS-native architectures. |
-| **[StepZen (IBM)](https://stepzen.com/)** | **~$220B** market cap / **$67.5B** revenue (IBM) | **$1,056/year** (~$88/month for up to 100k API calls/year on AWS Marketplace) / Pay-as-you-go via IBM Cloud from ~$0.0034/hour | **Free Lite Plan**: Up to 50,000 API calls/month across max 4 endpoints (1 location, 500 TPM / 100 TPS burst limit; community support) | GraphQL-as-a-service platform for composing graphs from REST, SOAP, SQL, and other GraphQL sources. Acquired by IBM and integrated into IBM API Connect Essentials. Declarative configuration via `stepzen` CLI. |
-| **[Apollo GraphOS (Studio)](https://studio.apollographql.com/)** | **$1.5B** valuation / **~$35M-$40M** ARR (Apollo Graph Inc.) | **Developer tier: $5.00 per million** requests (Queries & Mutations) + $2.00 per million subscription events (includes $50 credit) | **Free Forever**: Full GraphOS Studio access (Explorer, Registry, APM), up to 3 team members, self-hosted router rate-limited to 60 requests/minute | Apollo's commercial platform for schema registry, federation management, and usage reporting. Open-source Apollo Server integrates with GraphOS for schema checks and metrics; proprietary control plane. |
-| **[Hasura Cloud (DDN)](https://hasura.io/)** | **$1.0B** valuation / **~$25M-$30M** ARR (Hasura, Inc.) | **DDN Base: ~$5.00/month** (based on active data models); Cloud v2 Professional: **$1.50/project-hour** + $0.13/GB data passthrough | **Free Forever / 30-day trial for Base**: Cloud Free includes 3 projects, 2 data connectors, 3 million requests/month, and 100 MB data passthrough/month | Managed tier of Hasura's Data Delivery Network. Managed offering provides instant GraphQL over Postgres, MongoDB, ClickHouse, and SQL Server without self-hosting. DDN CLI, console, and LSP are proprietary. |
-
-## Open-Source GitHub Projects
-
-
-
-- **[Apollo Server](https://github.com/apollographql/apollo-server)**  
-
-  The spec-compliant, production-ready JavaScript GraphQL server. **Apollo Server 5** is a small upgrade from v4 focused on dependency version adjustments, typically taking minutes to migrate . Compatible with any GraphQL client, runs on Express, Fastify, AWS Lambda, Azure Functions, Cloudflare Workers, and more . **Schema-first** orientation with straightforward setup and universal data source compatibility . **Status note**: the OpenSSF scorecard shows maintenance activity has slowed (2/10 maintained score), though v5 remains current . MIT licensed. Best for Node.js teams that want a standard, well-documented server without framework lock-in.
-
-
-
-- **[Hasura GraphQL Engine](https://github.com/hasura/graphql-engine)**  
-
-  The instant GraphQL standard over databases. **V2** (stable) provides real-time GraphQL over Postgres with row-level permissions, event triggers, and actions. **V3** (DDN) adds support for MongoDB, ClickHouse, and SQL Server via data connectors . **Licensing**: V3 core engine and all connectors are Apache 2.0; V2 core engine is Apache 2.0, with CLI/console under MIT . **Critical caveat**: Hasura's own team confirms that while the engine is open-source, the **DDN CLI, web console, and LSP are proprietary**, and building metadata for V3 requires the cloud control plane . Best for teams that want instant GraphQL over existing databases and can work within the V2 self-hosted model or accept the DDN cloud dependency for V3.
-
-
-
-- **[GraphQL Hive](https://github.com/graphql-hive)**  
-
-  A **fully open-source (MIT) schema registry, analytics, and gateway** for GraphQL federation and monolithic APIs . **Components**: Hive Console (schema registry), Hive Gateway (JS-based federation/proxy gateway), and **Hive Router** (high-performance Rust federation router) . Supports Federation v1 and v2, subscriptions, and self-hosting via Docker . The Hive Gateway can act as a Federation gateway, subgraph, or proxy for any GraphQL API . **Ecosystem**: The Guild also maintains `graphql-yoga` (spec-compliant server), `graphql-modules`, and `graphql-eslint` within the same organization . Best for teams that want Apollo Federation compatibility with MIT licensing and self-hosting as a first-class option.
-
-
-
-- **[WunderGraph Cosmo](https://github.com/wundergraph/cosmo)**  
-
-  Full-lifecycle GraphQL federation management platform. **Stack**: CLI (`wgc`), Control Plane (Platform API + Node API), Router (federation-aware), and Studio (web interface) . Supports Federation v1 and v2, including subscriptions. **Deployment**: runs locally, on-premises, or as managed service . **Positioning**: enterprise-ready for scaling from a few subgraphs to thousands of operations, with composition checks, analytics, and distributed tracing . **Governance**: open-source router with self-host or managed options, no usage penalties . Best for teams that need federation governance with a path from self-hosted to managed without lock-in.
-
-
-
-- **[NestJS GraphQL (`@nestjs/graphql`)](https://github.com/nestjs/graphql)**  
-
-  The GraphQL module for the NestJS framework. **Two approaches**: **code-first** (TypeScript decorators generate schema) or **schema-first** (SDL files generate TypeScript types) . Supports Apollo and Mercurius drivers, real-time subscriptions via WebSocket, federation, and a plugin system . **GraphiQL** is the default IDE since v14 (GraphQL Playground was removed) . **Maintenance**: 2k stars, active with 30 commits in 90 days . MIT licensed. Best for NestJS teams that want first-class GraphQL integration with TypeScript end-to-end type safety.
-
-
-
-- **[Prisma](https://github.com/prisma/prisma)**  
-
-  The TypeScript ORM that serves as the **database layer inside GraphQL resolvers**—not a GraphQL framework itself. Prisma Client provides type-safe database queries, and its schema syntax is heavily inspired by GraphQL SDL . Works with Apollo Server, GraphQL Yoga, NestJS, Pothos, Nexus, and TypeGraphQL . **Note**: Prisma is migrating to a **Prisma Next** TypeScript rewrite (v7 branch), designed to be extensible and AI-agent friendly . Best for teams that want an ORM with end-to-end type safety from database to GraphQL resolver, reducing N+1 boilerplate via built-in dataloader patterns .
-
-
-
-- **[Supabase (pg_graphql)](https://github.com/supabase/supabase)**  
-
-  Supabase is a Postgres development platform; its GraphQL capability comes from the **`pg_graphql`** extension, which reflects a GraphQL schema from existing SQL tables and exposes it via `graphql.resolve()` . **No additional server required**—any language that connects to Postgres can query via GraphQL . Integrates with PostgREST for HTTP exposure . **Status**: introspection is **disabled by default** since `pg_graphql` 1.6.0 and must be enabled per schema . Best for teams already using Supabase or Postgres that want GraphQL without a separate server layer, accepting the trade-off of schema reflection rather than hand-crafted resolvers.
-
-
-
-### Additional Strong Open-Source Options
-
-
-
-- **GraphQL Yoga** — Spec-compliant, Fetch API-based GraphQL server from The Guild. Runs on any JS environment (Node, Deno, Bun, Cloudflare Workers). Best for teams that want a lightweight alternative to Apollo Server with modern runtime support .
-
-- **Pothos** — Code-first schema builder for TypeScript with a plugin system. Pairs well with Prisma for type-safe resolvers. Best for teams that prefer code-first without NestJS's framework overhead.
-
-- **Mercurius** — Fastify-based GraphQL server with JIT compilation. Best for Fastify users seeking performance.
-
-- **Frameworks for building custom systems**: Use **Apollo Server** or **GraphQL Yoga** as the execution layer, **Prisma** inside resolvers for database access, and **GraphQL Hive** or **WunderGraph Cosmo** for federation governance if the graph spans multiple services. For NestJS teams, use **`@nestjs/graphql`** with **Prisma** for a cohesive TypeScript stack. For instant GraphQL over Postgres without resolvers, use **Hasura V2** (self-hosted) or **Supabase `pg_graphql`**.
-
-
-
-## How to Contribute
-
-
-
-1. Fork the repo.
-
-2. Add/edit entries in `README.md` (follow existing format).
-
-3. Include: name, link, 1–2 sentence description, and whether it's SaaS or open-source.
-
-4. Submit PR with a short explanation.
-
-
-
-Star the repo if you find it useful!
-
-
-
-## Disclaimer
-
-
-
-- This is a **community-curated** list — not exhaustive and not an endorsement.
-
-- **"Open-source" claims vary significantly**: Apollo Server and GraphQL Hive are fully MIT/Apache licensed. Hasura V3's engine is Apache 2.0, but its DDN CLI and console are proprietary, and V3 metadata creation requires the cloud control plane—self-hosting V3 is not fully open-source . Verify licensing before committing to a self-hosted deployment.
-
-- **Prisma is an ORM, not a GraphQL framework**: it handles database access inside resolvers, not schema definition or execution. It's included because it's a common companion to GraphQL servers, not a replacement for them .
-
-- **Apollo Server's maintenance activity has slowed** according to OpenSSF metrics; evaluate GraphQL Yoga as a lighter, actively maintained alternative if you don't need Apollo Studio integration .
-
-
+# ⚡ Awesome GraphQL Frameworks & Ecosystem
+
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome GraphQL Frameworks Banner" width="100%" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a>
+  <a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Graphql-Frameworks/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Graphql-Frameworks?style=social" alt="Repo Stars" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Graphql-Frameworks/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-Graphql-Frameworks?style=social" alt="Repo Forks" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Graphql-Frameworks/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License" /></a>
+  <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
+</p>
 
 ---
 
+## 🌟 Overview & Discoverability
 
+A curated collection and index of top **GraphQL Frameworks**, **Schema-First & Code-First Servers**, **Federation Gateways & Routers**, **Schema Registries**, and **Cloud GraphQL-as-a-Service Platforms**. 
 
-**Made for backend engineers, full-stack developers, and platform teams building GraphQL APIs with control over their data layer.**  
+Whether you are architecting a distributed supergraph, composing unified APIs across microservices, building instant GraphQL over relational databases, or exploring high-performance Rust and Go gateways, this guide catalogs production-ready solutions across languages and cloud ecosystems.
 
-Let's make GraphQL frameworks more open, understandable, and appropriately licensed.
+---
+
+## 📑 Table of Contents
+
+- [📊 Sector Overview & Market Dynamics](#-sector-overview--market-dynamics)
+- [☁️ SaaS / Hosted Platforms](#️-saas--hosted-platforms)
+- [🐙 Open-Source GitHub Projects](#-open-source-github-projects)
+  - [🏆 Top Open-Source Frameworks & Engines](#-top-open-source-frameworks--engines)
+  - [🌐 Language-Specific & Specialized Frameworks](#-language-specific--specialized-frameworks)
+- [📈 Star History](#-star-history)
+- [🤝 How to Contribute](#-how-to-contribute)
+- [☕ Support](#-support)
+- [⚖️ Disclaimer](#️-disclaimer)
+
+---
+
+## 📊 Sector Overview & Market Dynamics
+
+The global GraphQL and API management sector is valued at approximately **$2.2B–$2.8B** (projected to reach over **$6.5B by 2030** with an estimated CAGR of ~22%), fueled by enterprise migration toward distributed supergraphs, federated microservices, and unified mobile-to-cloud gateways. The market exhibits **moderate fragmentation with emergent concentration**: hyperscalers (AWS AppSync) and incumbent API platforms capture standard cloud workloads, while specialized category pioneers (Apollo GraphQL and Hasura) dominate federation orchestration and instant database GraphQL, creating strong ecosystem gravity alongside fully open-source alternatives like GraphQL Hive and WunderGraph Cosmo.
+
+---
+
+## ☁️ SaaS / Hosted Platforms
+
+| Platform | Company Valuation / Revenue | Starting Pricing | Free Tier Limits | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **[AWS AppSync](https://aws.amazon.com/appsync/)** | **~$2.82T** market cap / **$716.9B** revenue (Amazon) | **$4.00 per million** query & mutation operations; **$2.00 per million** real-time update operations | **12 Months Free**: 250,000 query/mutation operations/month, 250,000 real-time updates/month, and 600,000 connection minutes/month | AWS's fully managed GraphQL service with real-time subscriptions, offline client sync, and built-in IAM/Cognito auth. Native integration with DynamoDB, RDS, Lambda, and EventBridge. |
+| **[StepZen (IBM)](https://stepzen.com/)** | **~$220B** market cap / **$67.5B** revenue (IBM) | **$1,056/year** (~$88/month for up to 100k API calls/year on AWS Marketplace) / Pay-as-you-go via IBM Cloud from ~$0.0034/hour | **Free Lite Plan**: Up to 50,000 API calls/month across max 4 endpoints (1 location, 500 TPM / 100 TPS burst limit; community support) | GraphQL-as-a-service platform for composing federated graphs from REST, SOAP, SQL, and GraphQL sources. Acquired by IBM and integrated into IBM API Connect Essentials. Declarative CLI configuration. |
+| **[Apollo GraphOS (Studio)](https://studio.apollographql.com/)** | **$1.5B** valuation / **~$35M-$40M** ARR (Apollo Graph Inc.) | **Developer tier: $5.00 per million** requests (Queries & Mutations) + $2.00 per million subscription events (includes $50 credit) | **Free Forever**: Full GraphOS Studio access (Explorer, Registry, APM), up to 3 team members, self-hosted router rate-limited to 60 requests/minute | Commercial control plane for GraphQL federation, schema delivery, proposal workflows, and deep telemetry. Seamlessly powers the Apollo Router and schema-checking pipelines. |
+| **[Hasura Cloud (DDN)](https://hasura.io/)** | **$1.0B** valuation / **~$25M-$30M** ARR (Hasura, Inc.) | **DDN Base: ~$5.00/month** (based on active data models); Cloud v2 Professional: **$1.50/project-hour** + $0.13/GB data passthrough | **Free Forever / 30-day trial for Base**: Cloud Free includes 3 projects, 2 data connectors, 3 million requests/month, and 100 MB data passthrough/month | Managed data delivery network generating instant, sub-millisecond GraphQL APIs over Postgres, MongoDB, ClickHouse, and SQL Server with robust row-level security. DDN console and CLI remain cloud-managed. |
+
+---
+
+## 🐙 Open-Source GitHub Projects
+
+All open-source frameworks and engines are sorted in descending order by GitHub star count. Each badge links directly to the repository stargazers page.
+
+### 🏆 Top Open-Source Frameworks & Engines
+
+1. **[Supabase](https://github.com/supabase/supabase)** [![Stars](https://img.shields.io/github/stars/supabase/supabase?style=social&color=white)](https://github.com/supabase/supabase/stargazers)  
+   The open-source Firebase alternative featuring native Postgres GraphQL via the **`pg_graphql`** extension. Reflects a high-performance GraphQL schema directly from SQL tables with zero extra resolver code.
+
+2. **[Prisma](https://github.com/prisma/prisma)** [![Stars](https://img.shields.io/github/stars/prisma/prisma?style=social&color=white)](https://github.com/prisma/prisma/stargazers)  
+   Next-generation Node.js and TypeScript ORM serving as the quintessential database access layer inside GraphQL resolvers. Eliminates N+1 query bottlenecks via automated dataloader batching and provides end-to-end type safety.
+
+3. **[Hasura GraphQL Engine](https://github.com/hasura/graphql-engine)** [![Stars](https://img.shields.io/github/stars/hasura/graphql-engine?style=social&color=white)](https://github.com/hasura/graphql-engine/stargazers)  
+   Blazing-fast, instant GraphQL API engine compiled over Postgres, MySQL, and multiple data sources. Features fine-grained row/column-level role-based authorization, event triggers, and remote schema stitching.
+
+4. **[graphql-js](https://github.com/graphql/graphql-js)** [![Stars](https://img.shields.io/github/stars/graphql/graphql-js?style=social&color=white)](https://github.com/graphql/graphql-js/stargazers)  
+   The foundational reference implementation of the GraphQL specification for JavaScript and Node.js. Serves as the bedrock parser, validator, and execution engine for nearly every Node.js GraphQL framework.
+
+5. **[Apollo Server](https://github.com/apollographql/apollo-server)** [![Stars](https://img.shields.io/github/stars/apollographql/apollo-server?style=social&color=white)](https://github.com/apollographql/apollo-server/stargazers)  
+   The industry-standard, production-ready, spec-compliant JavaScript/TypeScript GraphQL server. Plugs easily into Express, Fastify, AWS Lambda, Cloudflare Workers, and serverless environments with first-class Federation support.
+
+6. **[gqlgen](https://github.com/99designs/gqlgen)** [![Stars](https://img.shields.io/github/stars/99designs/gqlgen?style=social&color=white)](https://github.com/99designs/gqlgen/stargazers)  
+   Go library for building GraphQL servers without any runtime reflection. Uses a strict **schema-first** approach generating type-safe Go structs and execution harnesses, offering unmatched performance in Go services.
+
+7. **[graphql-go](https://github.com/graphql-go/graphql)** [![Stars](https://img.shields.io/github/stars/graphql-go/graphql?style=social&color=white)](https://github.com/graphql-go/graphql/stargazers)  
+   An active, pure-Go implementation of GraphQL supporting query, mutation, and schema execution inspired by `graphql-js`.
+
+8. **[GraphQL Yoga](https://github.com/dotansimha/graphql-yoga)** [![Stars](https://img.shields.io/github/stars/dotansimha/graphql-yoga?style=social&color=white)](https://github.com/dotansimha/graphql-yoga/stargazers)  
+   Fully featured, Fetch-API-first GraphQL server from The Guild. Runs effortlessly across any JavaScript runtime (Node.js, Deno, Bun, Cloudflare Workers) with built-in CORS, file uploads, SSE subscriptions, and GraphiQL.
+
+9. **[Graphene](https://github.com/graphql-python/graphene)** [![Stars](https://img.shields.io/github/stars/graphql-python/graphene?style=social&color=white)](https://github.com/graphql-python/graphene/stargazers)  
+   A code-first Python library for building GraphQL schemas and APIs. Features tight integrations with Django (`graphene-django`), SQLAlchemy, and Google App Engine.
+
+10. **[GraphQL Java](https://github.com/graphql-java/graphql-java)** [![Stars](https://img.shields.io/github/stars/graphql-java/graphql-java?style=social&color=white)](https://github.com/graphql-java/graphql-java/stargazers)  
+    The core GraphQL execution engine for Java. Forms the underlying backbone of Spring for GraphQL, Netflix DGS framework, and enterprise JVM microservice architectures.
+
+11. **[GraphQL Ruby](https://github.com/rmosolgo/graphql-ruby)** [![Stars](https://img.shields.io/github/stars/rmosolgo/graphql-ruby?style=social&color=white)](https://github.com/rmosolgo/graphql-ruby/stargazers)  
+    The premier Ruby implementation of GraphQL, widely deployed across large Ruby on Rails applications. Features code-first DSLs, active query analyzers, tracing, and ActionCable subscription support.
+
+12. **[Strawberry GraphQL](https://github.com/strawberry-graphql/strawberry)** [![Stars](https://img.shields.io/github/stars/strawberry-graphql/strawberry?style=social&color=white)](https://github.com/strawberry-graphql/strawberry/stargazers)  
+    Modern, Python 3 dataclass-based GraphQL library inspired by TypeGraphQL. Utilizes standard Python type hints to generate schemas with asynchronous execution, FastAPI/Django adapters, and Apollo Federation support.
+
+13. **[webonyx/graphql-php](https://github.com/webonyx/graphql-php)** [![Stars](https://img.shields.io/github/stars/webonyx/graphql-php?style=social&color=white)](https://github.com/webonyx/graphql-php/stargazers)  
+    A feature-complete PHP port of the GraphQL reference implementation. Serves as the core engine powering Lighthouse (Laravel) and API Platform (Symfony).
+
+14. **[async-graphql](https://github.com/async-graphql/async-graphql)** [![Stars](https://img.shields.io/github/stars/async-graphql/async-graphql?style=social&color=white)](https://github.com/async-graphql/async-graphql/stargazers)  
+    High-performance, type-safe GraphQL server library for Rust. Fully async, spec-compliant, and integrates seamlessly with Actix-web, Axum, Poem, and Rocket with Federation v2 compatibility.
+
+15. **[Pothos](https://github.com/hayes/pothos)** [![Stars](https://img.shields.io/github/stars/hayes/pothos?style=social&color=white)](https://github.com/hayes/pothos/stargazers)  
+    TypeScript-first schema builder designed around static type inference without code generation. Pairs exceptionally well with Prisma for end-to-end compile-time type safety.
+
+16. **[Mercurius](https://github.com/mercurius-js/mercurius)** [![Stars](https://img.shields.io/github/stars/mercurius-js/mercurius?style=social&color=white)](https://github.com/mercurius-js/mercurius/stargazers)  
+    High-throughput GraphQL adapter for Fastify featuring JIT query compilation, automatic loader caching, and low overhead federation gateway modules.
+
+17. **[NestJS GraphQL](https://github.com/nestjs/graphql)** [![Stars](https://img.shields.io/github/stars/nestjs/graphql?style=social&color=white)](https://github.com/nestjs/graphql/stargazers)  
+    Official GraphQL module for the enterprise NestJS TypeScript framework. Provides both code-first (TypeScript decorators) and schema-first approaches with Apollo and Mercurius execution drivers.
+
+18. **[WunderGraph Cosmo](https://github.com/wundergraph/cosmo)** [![Stars](https://img.shields.io/github/stars/wundergraph/cosmo?style=social&color=white)](https://github.com/wundergraph/cosmo/stargazers)  
+    Full-lifecycle open-source GraphQL federation management platform. Includes a lightning-fast Rust router, web-based studio, schema registry, analytics engine, and zero-downtime composition validation.
+
+19. **[GraphQL Hive](https://github.com/graphql-hive/platform)** [![Stars](https://img.shields.io/github/stars/graphql-hive/platform?style=social&color=white)](https://github.com/graphql-hive/platform/stargazers)  
+    Fully open-source (MIT), self-hostable schema registry, monitoring, and federation gateway platform built by The Guild. Features Federation v1/v2 schema checks, usage analytics, and high-speed Hive Router in Rust.
+
+---
+
+## 🌐 Language-Specific & Specialized Frameworks
+
+- **Node.js / TypeScript**: [Apollo Server](https://github.com/apollographql/apollo-server), [GraphQL Yoga](https://github.com/dotansimha/graphql-yoga), [NestJS GraphQL](https://github.com/nestjs/graphql), [Mercurius](https://github.com/mercurius-js/mercurius), [Pothos](https://github.com/hayes/pothos)
+- **Go**: [gqlgen](https://github.com/99designs/gqlgen), [graphql-go](https://github.com/graphql-go/graphql)
+- **Rust**: [async-graphql](https://github.com/async-graphql/async-graphql), [Hive Router](https://github.com/graphql-hive/platform), [Cosmo Router](https://github.com/wundergraph/cosmo)
+- **Python**: [Strawberry](https://github.com/strawberry-graphql/strawberry), [Graphene](https://github.com/graphql-python/graphene)
+- **Java / JVM**: [GraphQL Java](https://github.com/graphql-java/graphql-java), Spring for GraphQL, Netflix DGS
+- **Ruby**: [GraphQL Ruby](https://github.com/rmosolgo/graphql-ruby)
+- **PHP**: [webonyx/graphql-php](https://github.com/webonyx/graphql-php)
+- **Database-Native Engines**: [Hasura](https://github.com/hasura/graphql-engine), [Supabase pg_graphql](https://github.com/supabase/supabase), [Prisma](https://github.com/prisma/prisma)
+
+---
+
+## 📈 Star History
+
+[![Star History Chart](https://star-history.dera.page/svgrrepos=ishandutta2007/Awesome-Graphql-Frameworks&type=date&legend=top-left)](https://star-history.dera.page/#ishandutta2007/Awesome-Graphql-Frameworks&type=date&legend=top-left)
+
+---
+
+## 🤝 How to Contribute
+
+Contributions are warmly welcome!
+
+1. 🍴 **Fork** the repository.
+2. 🌿 Create a feature branch: `git checkout -b feature/new-framework`.
+3. 📝 Add or update entries (please keep descriptions objective, include badges, and maintain sorted order).
+4. 🚀 Open a Pull Request with a short summary of the additions.
+
+---
+
+## ☕ Support
+
+Thank you so much for exploring and supporting **Awesome GraphQL Frameworks**! 💖
+
+If you find this repository helpful, please consider:
+- ⭐ **Starring** the repository on GitHub
+- 🍴 **Forking** and contributing new entries
+- 📢 **Sharing** with your colleagues, teams, and social networks
+- ☕ Sponsoring or buying a coffee via the [Sponsor Dashboard](https://github.com/sponsors/ishandutta2007)
+
+Your support keeps open-source research and community developer resources alive and thriving!
+
+---
+
+## ⚖️ Disclaimer
+
+- This list is a community-curated directory intended for educational and architectural evaluation purposes.
+- Licensing nuances should be verified independently before deploying to production (e.g., Hasura V3 engine vs. cloud-only control plane).
+- Star counts and financial valuations reflect recent public records and market estimates.
