@@ -56,7 +56,7 @@ The global GraphQL and API management sector is valued at approximately **$2.2B�
 
 ## 🐙 Open-Source GitHub Projects
 
-All open-source frameworks and engines are sorted in descending order by GitHub star count. Each badge links directly to the repository stargazers page.
+All open-source frameworks and engines are sorted in descending order by GitHub Stars_Count. Each badge links directly to the repository stargazers page.
 
 ### 🏆 Top Open-Source Frameworks & Engines
 
@@ -167,4 +167,4 @@ Your support keeps open-source research and community developer resources alive 
 
 - This list is a community-curated directory intended for educational and architectural evaluation purposes.
 - Licensing nuances should be verified independently before deploying to production (e.g., Hasura V3 engine vs. cloud-only control plane).
-- Star counts and financial valuations reflect recent public records and market estimates.
+- Stars_Counts and financial valuations reflect recent public records and market estimates.
